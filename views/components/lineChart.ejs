@@ -1,0 +1,41 @@
+<script>
+    anychart.onDocumentReady(function () {
+        // create data
+        var data = [
+            ["Jan", 10000],
+            ["Feb", 12000],
+            ["Mar", 18000],
+            ["Apr", 11000],
+            ["May", 9000],
+            ["Jun", 7000],
+            ["Jul", 15000],
+            ["Aug", 16000],
+            ["Sep", 12560],
+            ["Oct", 10589],
+            ["Nov", 8562],
+            ["Dec", 4568]
+        ];
+
+        // create a chart
+        chart = anychart.line();
+
+        // create a line series and set the data
+        var series = chart.line(data);
+
+        chart.marker(data);
+
+        chart.title(" תחזית שבועית למכירת טעם מסוים בסניף הנבחר");
+
+        // set the container id
+        chart.container("lineChart");
+
+        // set the size of markers
+        series.normal().size(10);
+        series.hovered().size(15);
+        series.selected().size(15);
+
+        // initiate drawing the chart
+        chart.draw();
+
+    });
+</script>

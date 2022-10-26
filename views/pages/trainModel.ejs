@@ -1,0 +1,304 @@
+<%- include('../common/head') %>
+
+    <body>
+        <header>
+            <%- include('../common/header') %>
+        </header>
+
+
+        <div class="container">
+
+
+            <div class="main-component">
+                <span id="head-text"> הכנת נתונים ושליחתם לשירות למידה </span>
+
+                <div class="first-box">
+                    <button id="train-model">אמן מודל</button>
+                </div>
+                <div class="dates-container">
+                    <br />
+                    <br />
+
+                    <div class="menu-items-container">
+
+                        <div class="dropdown">
+                            <button onclick="myFlavorFunction()" class="dropbtn">Select Flavor</button>
+                            <div id="FlavorDropdown" class="dropdown-content">
+                                <a href="#">Lemon</a>
+                                <a href="#">Chocholate</a>
+                                <a href="#">Vanilla</a>
+                                <a href="#">Strawberry</a>
+                                <a href="#">Halva</a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown">
+                            <button onclick="myStoreFunction()" class="dropbtn">Select Store</button>
+                            <div id="StoreDropdown" class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                                <a href="#">...</a>
+                                <a href="#">Link 100</a>
+                            </div>
+                        </div>
+
+                        <span>
+                            <div class="date-view">
+                                <%- include('../components/calendar') %>
+                            </div>
+                        </span>
+
+                        <style>
+                            .dates-container {
+                                display: flex;
+                                justify-content: center;
+                                justify-items: center;
+                                align-items: center;
+                            }
+
+                            .menu-items-container {
+                                display: flex;
+                                width: max-content;
+                                justify-content: space-evenly;
+                                justify-items: center;
+                                align-items: center;
+                            }
+
+                            /* Dropdown Button */
+                            .dropbtn {
+                                display: flex;
+                                padding-right: 170px;
+                                background-color: #402dec;
+                                color: rgb(255, 255, 255);
+                                padding: 16px;
+                                font-size: 16px;
+                                border: none;
+                                cursor: pointer;
+                                justify-content: center;
+                                align-items: center;
+                            }
+
+                            /* Dropdown button on hover & focus */
+                            .dropbtn:hover,
+                            .dropbtn:focus {
+                                background-color: #2980B9;
+                            }
+
+                            /* The container <div> - needed to position the dropdown content */
+                            .dropdown {
+                                position: relative;
+                                display: center;
+                                margin-left: 10px;
+                                margin-top: 20px;
+                            }
+
+                            /* Dropdown Content (Hidden by Default) */
+                            .dropdown-content {
+                                display: none;
+                                position: absolute;
+                                background-color: #2590f579;
+                                font-size: 20px;
+                                min-width: 160px;
+                                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.801);
+                                z-index: 1;
+                            }
+
+                            /* Links inside the dropdown */
+                            .dropdown-content a {
+                                color: black;
+                                padding: 12px 16px;
+                                text-decoration: none;
+                                display: block;
+                            }
+
+                            /* Change color of dropdown links on hover */
+                            .dropdown-content a:hover {
+                                background-color: #ddd;
+                            }
+
+                            /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+                            .show {
+                                display: block;
+                            }
+                        </style>
+                        <script>
+
+                            /* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+                            function myStoreFunction() {
+                                document.getElementById("StoreDropdown").classList.toggle("show");
+                            }
+
+                            // Close the dropdown menu if the user clicks outside of it
+                            window.onclick = function (event) {
+                                if (!event.target.matches('.dropbtn')) {
+                                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                                    var i;
+                                    for (i = 0; i < dropdowns.length; i++) {
+                                        var openDropdown = dropdowns[i];
+                                        if (openDropdown.classList.contains('show')) {
+                                            openDropdown.classList.remove('show');
+                                        }
+                                    }
+                                }
+                            }
+
+                            /* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+                            function myFlavorFunction() {
+                                document.getElementById("FlavorDropdown").classList.toggle("show");
+                            }
+
+                            // Close the dropdown menu if the user clicks outside of it
+                            window.onclick = function (event) {
+                                if (!event.target.matches('.dropbtn')) {
+                                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                                    var i;
+                                    for (i = 0; i < dropdowns.length; i++) {
+                                        var openDropdown = dropdowns[i];
+                                        if (openDropdown.classList.contains('show')) {
+                                            openDropdown.classList.remove('show');
+                                        }
+                                    }
+                                }
+                            }
+                        </script>
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart_view">
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <div id="answer">
+                    
+                כאן התשובה של התחזיות אמורה להופיע<br />האם נספיק להגיש בזמן<br/><br/><br/><br/>זאת השאלה...
+                </div>
+            </div>
+
+            <div class="flexbox-container">
+                <div class="flexbox-item flexbox-item-1">
+                    <div class="allNetStock">
+                        מלאים כללים בכל הרשת
+                        <br />
+                    </div>
+                    <div class="flexbox-item flexbox-item-2">
+                        <div class="card">
+                            <div class="card-item-1">
+                                <img src="/Lemon.jpg" width="50" alt="lemonLogo">
+                                Lemon
+                                <div class="quantity">45 KG</div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-item-2">
+                                <img src="/Chocholate.jpg" width="50" alt="chocholateLogo">
+                                Chocolate
+                                <div class="quantity">80 KG</div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-item-3">
+                                <img src="/Vanilla.jpg" width="50" alt="vanillaLogo">
+                                Vanilla
+                                <div class="qunatity">75 KG</div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-item-4">
+                                <img src="/Strawberry.jpg" width="50" alt="strawberryLogo">
+                                Strawberry
+                                <div class="quantity">35 KG</div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-item-5">
+                                <img src="/Halva.jpg" width="50" alt="halvaLogo">
+                                Halva
+                                <div class="quantity">45 KG</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <style>
+            .container {
+                position: absolute;
+                margin-top: 45px;
+            }
+
+            .main-component {
+                position: relative;
+                width: 790px;
+                height: 380px;
+                background-color: white;
+                margin-top: 20px;
+                padding-left: 90px;
+                border-radius: 8px;
+            }
+
+            #head-text {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 20px;
+                padding-top: 20px;
+                padding-right: 120px;
+            }
+
+            .first-box {
+                position: flex;
+                padding-top: 60px;
+                padding-right: 110px;
+                font-size: 15px;
+                justify-content: center;
+                align-items: center;
+                border-color: rgba(0, 0, 0, 0.87);
+            }
+
+            .first-box{
+                display: flex;
+                justify-content: center;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #train-model {
+                margin-top: 30px;
+                justify-items: center;
+                padding-top: 20px;
+                margin-left: 25px;
+                padding-bottom: 20px;
+                padding-left: 60px;
+                padding-right: 60px;
+            }
+
+            #answer{
+                display: flex;
+                justify-content: center;
+                justify-items: center;
+                align-items: center;
+                background-color: white;
+            } 
+        </style>
+        <footer>
+            <%- include('../common/footer') %>
+        </footer>
+    </body>
+
+    </html>

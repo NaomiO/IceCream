@@ -1,0 +1,36 @@
+<script>
+
+    anychart.onDocumentReady(function () {
+
+        // set the data
+        var data = [
+            { x: "Chocolate", value: 2355326 },
+            { x: "Vanilla", value: 2229319 },
+            { x: "Strawberry", value: 1322248 },
+            { x: "Lemon", value: 1704252 },
+            { x: "Halva", value: 1240013 }
+        ];
+
+        // create the chart
+        var chart = anychart.pie();
+
+        // set the chart title
+        chart.title("Best selling flavours");
+
+        // add the data
+        chart.data(data);
+
+        // set legend position
+        chart.legend().position("right");
+        // set items layout
+        chart.legend().itemsLayout("vertical");
+        // sort elements
+        chart.sort("desc");
+
+        // display the chart in the container
+        chart.container('pieChart');
+        chart.draw();
+
+    });
+
+</script>

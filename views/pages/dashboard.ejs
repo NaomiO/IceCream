@@ -1,0 +1,144 @@
+<%- include('../common/head') %>
+
+    <body>
+        <header>
+            <%- include('../common/header') %>
+        </header>
+        <div class="container">
+
+            <div class="firstLineView">
+                <button onclick="myHolidayFunction()" id="holiday" >האם חג קרוב השבוע</button>
+                <button onclick="mySeasonFunction()" id="season" >עונה נוכחית</button>
+            </div>
+
+            <div class="chart_view">
+                <div id="pieChart" style="width: 100%; height: 100%">
+                    <%- include('../components/pieChart') %>
+                </div>
+            </div>
+            
+
+            <div class="flexbox-container">
+
+                <div class="flexbox-item flexbox-item-1">
+                    <div class="allNetStock">
+                        מלאים כללים בכל הרשת
+                        <br/>
+                    </div>
+                    <div class="flexbox-item flexbox-item-2">
+                        <div class="card">
+                            <div class="card-item-1">
+                                <img src="/Lemon.jpg" width="50" alt="lemonLogo">
+                                Lemon
+                                <div class="quantity">45 KG</div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-item-2">
+                                <img src="/Chocholate.jpg" width="50" alt="chocholateLogo">
+                                Chocolate
+                                <div class="quantity">80 KG</div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-item-3">
+                                <img src="/Vanilla.jpg" width="50" alt="vanillaLogo">
+                                Vanilla
+                                <div class="qunatity">75 KG</div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-item-4">
+                                <img src="/Strawberry.jpg" width="50" alt="strawberryLogo">
+                                Strawberry
+                                <div class="quantity">35 KG</div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-item-5">
+                                <img src="/Halva.jpg" width="50" alt="halvaLogo">
+                                Halva
+                                <div class="quantity">45 KG</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+
+            </div>
+
+
+
+        </div>
+        <footer>
+            <!-- <%- include('../common/footer') %> -->
+        </footer>
+
+
+        <script>
+            
+            function mySeasonFunction() {
+                const initialText = 'Click me';
+                const season_btn = document.getElementById('season');
+                season_btn.addEventListener('click', function handleClick() {
+                const d = new Date();
+                let month = d.getMonth();
+                if (season_btn.textContent == 'עונה נוכחית'){
+                    if (month == 12 || month == 1 || month == 2) {
+                        season_btn.textContent = 'העונה היא חורף';
+                        } 
+                        else if (month == 3 || month == 4 || month == 5){
+                            season_btn.textContent = 'העונה היא אביב';
+                            }
+                            else if (month == 6 || month == 7 || month == 8){
+                                season_btn.textContent = 'העונה היא קיץ';}
+                                else { 
+                                    season_btn.textContent= 'העונה היא סתיו';}  }
+                    else season_btn.textContent = 'עונה נוכחית' });             
+            }          
+
+            function myHolidayFunction() {
+                const initialText = 'Click me';
+                const holiday_button = document.getElementById('holiday');
+                holiday_button.addEventListener('click', function handleClick() {
+                const d = new Date();
+                let month = d.getMonth();
+                let day = d.getDate();
+                console.log(day);
+                console.log(month);
+
+
+                if (holiday_button.textContent == 'האם חג קרוב השבוע'){
+                    if (month == 8 && day == 25 || month == 8 && day == 26 || month == 8  && day == 27) {
+                        holiday_button.textContent = 'יש חג ראש השנה';
+                        } 
+                        else if (month == 9 && day == 2 || month == 9 && day == 3 || month == 9 && day == 4 || month == 9 && day == 5 || month == 9 && day == 9 || month == 9 && day == 10 || month == 9 && day == 16 || month == 9 && day == 17){
+                            holiday_button.textContent = 'יש חג סוכות';
+                            }
+                            else if (month == 4 && day == 2 || month == 4 && day == 3 || month == 4 && day == 4 || month == 4 && day == 5 || month == 4 && day == 6 || month == 4 && day == 9 || month == 4 && day == 10 || month == 4 && day == 11 || month == 4 && day == 12 ){
+                                holiday_button.textContent = 'יש חג פסח';
+                                }
+                                else if (month == 4 && day == 23 || month == 4 && day == 24 || month == 4 && day == 25 || month == 4 && day == 26 ){
+                                    holiday_button.textContent = 'יש חג העצמאות';}
+                                    else if (month == 5 && day == 21 || month == 5 && day == 22 ||  month == 5 && day == 23 ||  month == 5 && day == 24 ||  month == 5 && day == 25 ||  month == 5 && day == 26 ){
+                                        holiday_button.textContent = 'יש חג שבועות';}
+                                        else { 
+                                            holiday_button.textContent= 'אין חג השבוע';}  }
+                    else holiday_button.textContent = 'האם חג קרוב השבוע' });             
+            }          
+        </script>
+        <style>
+            .container{
+                position:absolute;
+                margin-top: 70px;
+                left: 0;
+            }
+        </style>
+    </body>
+
+    </html>

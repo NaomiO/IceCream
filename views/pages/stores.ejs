@@ -1,0 +1,213 @@
+
+<%- include('../common/head') %>
+
+    <body>
+        <header>
+            <%- include('../common/header') %>
+        </header>
+
+        <div class="container">
+
+            This is Stores page
+            <div class="menu-items-container">
+                <div class="dropdown">
+                    <select id= "storeSelect" onchange="myStoreFunction()" class="dropbtn">
+                        <ul>
+                            <option value="0">Select Store</option>    
+                            <% cities.forEach(function(cities) { %>
+                              <li>
+                                <a href="#">
+                                <option value ='<%= cities.NameCity %>'><%= cities.NameCity %></option>
+                                </a>
+                            <% }); %>
+                              </li>
+                        </ul>
+                    </select>
+                </div>
+
+                <div class="dropdown">
+                    <select id= "flavorSelect" onchange="myFlavorFunction()" class="dropbtn">Select Flavor</button>
+                        <option value="0">Select Flavor</option>    
+                        <option href="#">Lemon</option>
+                        <option href="#">Chocolate</option>
+                        <option href="#">Vanilla</option>
+                        <option href="#">Strawberry</option>
+                        <option href="#">Halva</option>
+                    </select>
+                </div>
+                
+            </div>
+
+    
+            <div class="chart_view">
+                <div id="lineChart" style="width: 100%; height: 50%">
+                    <%- include('../components/lineChart') %>
+                </div>
+                <div id="barChart" style="width: 100%; height: 50%">
+                    <%- include('../components/barChart') %>
+                </div>
+            </div>
+
+            <div class="charts-container">
+                <div class="flexbox-container">
+                    <div class="flexbox-item flexbox-item-1">
+                        <div class="allNetStock">
+                            מלאים כללים בכל הרשת
+                            <br />
+                        </div>
+                        <div class="flexbox-item flexbox-item-2">
+                            <div class="card">
+                                <div class="card-item-1">
+                                    <img src="/Lemon.jpg" width="50" alt="lemonLogo">
+                                    Lemon
+                                    <div class="quantity">45 KG</div>
+
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-item-2">
+                                    <img src="/Chocholate.jpg" width="50" alt="chocholateLogo">
+                                    Chocolate
+                                    <div class="quantity">35 KG
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-item-3">
+                                    <img src="/Vanilla.jpg" width="50" alt="vanillaLogo">
+                                    Vanilla
+                                    <div class="qunatity">45 KG</div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-item-4">
+                                    <img src="/Strawberry.jpg" width="50" alt="strawberryLogo">
+                                    Strawberry
+                                    <div class="quantity">35 KG</div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-item-5">
+                                    <img src="/Halva.jpg" width="50" alt="halvaLogo">
+                                    Halva
+                                    <div class="quantity">45 KG</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <%- include('../common/footer') %>
+        </footer>
+        <script>
+            /* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+            let flavors = [];
+            function myStoreFunction() {
+                var select = document.getElementById("storeSelect");
+                var store = select.options[select.selectedIndex].text;
+                console.log(store);
+                //myStoreFlavorsFunction(store);
+                fetch('http://localhost:3000/flavors?name='+store)
+                    .then((response) => response.json())
+                    .then((data) => {console.log(data); flavors = data})
+                    .catch((error)=>{
+                        console.error('ERR',error);
+    
+                    })
+            }
+            function myStoreFlavorsFunction(text){
+                return text;
+            }
+            
+
+
+            /* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+            function myFlavorFunction() {
+                var select = document.getElementById("flavorSelect");
+                var flavor = select.options[select.selectedIndex].text;
+                console.log(flavor);            }
+
+
+            
+        </script>
+
+        <style>
+            /* Dropdown Button */
+            .dropbtn {
+                background-color: #402dec;
+                color: white;
+                padding: 16px;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+            }
+
+            /* Dropdown button on hover & focus */
+            .dropbtn:hover,
+            .dropbtn:focus {
+                background-color: #2980B9;
+            }
+
+            /* The container <div> - needed to position the dropdown content */
+            .dropdown {
+                position: relative;
+                display: inline-block;
+                margin-left: 110px;
+                margin-top: 20px;
+            }
+            #myInput {
+                box-sizing: border-box;
+                background-position: 14px 12px;
+                background-repeat: no-repeat;
+                font-size: 16px;
+                padding: 14px 20px 12px 45px;
+                border: none;
+                border-bottom: 1px solid #ddd;
+                }
+
+            #myInput:focus {outline: 3px solid #ddd;}
+            /* Dropdown Content (Hidden by Default) */
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f1f1f1;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                z-index: 1;
+            }
+
+            /* Links inside the dropdown */
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            /* Change color of dropdown links on hover */
+            .dropdown-content a:hover {
+                background-color: #ddd;
+            }
+
+            /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+            .show {
+                display: block;
+            }
+        </style>
+
+    </body>
+
+    </html>
